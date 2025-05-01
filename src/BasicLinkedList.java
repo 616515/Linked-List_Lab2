@@ -27,8 +27,11 @@ public class BasicLinkedList {
     public void printAll() {
         MyNode current = head;
         while (current != null) {
-            System.out.print(current.getElement() + " ");
+            System.out.print(current.getElement() + ", ");
             current = current.getNextNode();
+        }
+        if(head == null){
+            System.out.print("Empty");
         }
         System.out.println();
     }

@@ -18,6 +18,7 @@ public class Main {
         EnhancedLinkedList1.printAll();
         EnhancedLinkedList1.remove(2);
         EnhancedLinkedList1.printAll();
+
         EnhancedLinkedList1.addFirst(1);
         EnhancedLinkedList1.addFirst(2);
         EnhancedLinkedList1.addFirst(3);
