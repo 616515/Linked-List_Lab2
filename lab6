@@ -1,0 +1,144 @@
+import java.util.Scanner;
+
+public class QALL {
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static void main(String[] args)
+    {   System.out.print("Q1 : ");
+        int result = sum(6, 10);
+        System.out.println(result);
+        System.out.println();
+        System.out.print("Q2 : ");
+        int result2 = funExam(5, 0, 4);
+        System.out.println(result2);
+        System.out.println();
+        System.out.print("Q3 : ");
+        int result3 = funExam2(5, 3, 1);
+        System.out.println(result3);
+        System.out.println();
+        System.out.print("Q4 : ");
+        System.out.println("Hello");
+        int result4 = funny(5, 5, 0);
+        System.out.println(result4);
+        System.out.println();
+        System.out.print(ANSI_GREEN+"Q5 : "+ANSI_GREEN);
+        int result5 = Q5();
+        System.out.println(ANSI_GREEN+"Smallest number using loop: "+ANSI_GREEN + result5);
+        System.out.println();
+        System.out.print("Q6 : ");
+        int[] arr = {45, 23, 12, 89, 2, 90, 3};
+        int min = findMin(arr, 0);
+        System.out.println(ANSI_GREEN + "Smallest number using recursion: " + ANSI_GREEN + min);
+        System.out.println();
+        System.out.print("Q7 : ");
+        String word = "civic";
+        boolean result7 = isPalindrome(word, 0, word.length() - 1);
+        System.out.println(ANSI_GREEN+"Is '" + word + "' a palindrome? "+ANSI_GREEN + result7);
+        System.out.println();
+        System.out.print("Q8 : ");
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the length of the input: ");
+        int n = scanner.nextInt();
+        int[] input = new int[n];
+        for (int i = 0; i < n; i++) {
+            System.out.print("Enter #" + (i + 1) + " integer: ");
+            input[i] = scanner.nextInt();
+        }
+        System.out.print("Output will be: ");
+        generatePairs(input, 0, 1);
+    }
+    //Q1
+    public static int sum(int start, int end)
+    {
+        if (end > start)
+        {
+            return end + sum(start, end - 1);
+        }
+        else
+        {
+            return end;
+        }
+    }
+    //Q2
+    public static int funExam(int x, int y, int z)
+    {
+        if(y == 0)
+        {
+            return z;
+        }
+        else{
+            int m = funExam(x,y-1,z+1);
+            m=m+z;
+            return m;
+        }
+    }
+    //Q3
+    public static int funExam2(int x, int y, int z)
+    {
+        if(y == 0)
+        {
+            return z;
+        }
+        else{
+            int m = funExam(x,y-1,z+1);
+            m=m+z;
+            return m;
+        }
+    }
+    //Q4
+    public static int funny(int x, int y, int z)
+    {
+        int a,b;
+        if(z == 3)
+        {
+            return y;
+        }
+        else if (z==4)
+        {
+            return 1;
+        }
+        else{
+            a = funny(x,y-1,z+1);
+            b = funny(x,y-1,z+2);
+            int k = a+b;
+            System.out.println("ab = "+k);
+            return a+b;
+        }
+    }
+    //Q5
+    public static int Q5()
+    {
+        int[] arr = {45, 23, 12, 89, 2, 90, 3};
+        int min = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] < min) {
+                min = arr[i];
+            }
+        }
+        return min;
+    }
+    //Q6
+    public static int findMin(int[] arr, int index) {
+
+        if (index == arr.length - 1) {
+            return arr[index];
+        }
+        int minRest = findMin(arr, index + 1);
+        return Math.min(arr[index], minRest);
+    }
+    //Q7
+    public static boolean isPalindrome(String str, int start, int end) {
+        if (start >= end) return true;  // Termination condition
+        if (str.charAt(start) != str.charAt(end)) return false;
+        return isPalindrome(str, start + 1, end - 1);
+    }
+    //Q8
+    public static void generatePairs(int[] arr, int start, int next) {
+        if (start >= arr.length - 1) return;
+        if (next >= arr.length) {
+            generatePairs(arr, start + 1, start + 2);
+        } else {
+            System.out.print(ANSI_GREEN+"{" + arr[start] + "," + arr[next] + "} "+ANSI_GREEN);
+            generatePairs(arr, start, next + 1);
+        }
+    }
+}
